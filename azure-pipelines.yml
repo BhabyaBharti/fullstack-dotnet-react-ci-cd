@@ -3,7 +3,7 @@ trigger: none
 pool: sh-app-delivery-pool
 
 stages:
-  - stage: Scan
+  - stage: Test
     displayName: Scan Dotnet
     jobs:
       - job: UnitTesting
@@ -22,3 +22,15 @@ stages:
               command: test
               projects: '**/*.csproj'
               arguments: '--logger trx'
+
+  - stage: Build
+    displayName: Build DotNet
+
+    jobs:
+      - job: BuildDotNet
+        displayName: Build .Net App
+        steps:
+          - task: DotNetCoreCLI@2
+            inputs:
+              command: 'build'
+              projects: '$(System.DefaultWorkingDirectory)'
