@@ -10,9 +10,15 @@ stages:
         displayName: Unit Testing
 
         steps:
+          - task: UseDotNet@2
+            displayName: Install .Net SDK
+            inputs:
+              packageType: 'sdk'
+              version: '8.0.x'
+
           - task: DotNetCoreCLI@2
             displayName: Test .Net
             inputs:
-              command: 'test'
-              projects: '$(System.DefaultWorkingDirectory)'
-              testRunTitle: 'Test .Net'
+              command: test
+              projects: '**/*.csproj'
+              arguments: '--logger trx'
