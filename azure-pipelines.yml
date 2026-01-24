@@ -44,4 +44,3 @@ stages:
             inputs:
               command: build
               projects: '**/*.csproj'
-              arguments: '--logger trx'
