@@ -30,6 +30,16 @@ stages:
       - job: BuildDotNet
         displayName: Build .Net App
         steps:
+          - task: UseDotNet@2
+            displayName: Install .Net SDK
+            inputs:
+              version: '8.0.x'
+              packageType: 'sdk'
+          - task: DotNetCoreCLI@2
+            displayName: Restore
+            inputs:
+              command: restore
+              projects: '**/*.csproj'
           - task: DotNetCoreCLI@2
             inputs:
               command: build
