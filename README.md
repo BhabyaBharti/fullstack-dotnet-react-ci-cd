@@ -145,13 +145,6 @@ can be deployed across multiple platforms with minimal changes.
 - **Pipeline-first approach**, app kept intentionally simple
 - Designed for extensibility (Kubernetes, cloud-native services)
 
----
-
-## 🔮 Future Enhancements
-
-- Kubernetes deployment (AKS / EKS)
-- Blue-Green or Canary deployments
-- Monitoring & logging integration
 
 ---
 
