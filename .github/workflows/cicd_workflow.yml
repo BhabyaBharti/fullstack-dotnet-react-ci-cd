@@ -62,9 +62,14 @@ jobs:
     - name: Run .Net Tests
       working-directory:
       env:
-        connectionStrings_DefaultConnection: "Server=mysql;Database=elearn_db;User=root;Password=rootpassword;"
+        connectionStrings_DefaultConnection: "Server=mysql;Database=elearn_db;User=root;Password=root;"
       run: dotnet test --no-build --verbosity normal
-      
 
-    
-    
+  build-push-to-acr:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Login to Azure
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
